@@ -58,10 +58,10 @@ export default class ImageAssetIdEditing extends Plugin {
                             data.attributeNewValue,
                             figure
                         );
-                        //viewWriter.addClass('image_copyright', figure);
+                        //viewWriter.addClass('image_asset_id', figure); //doesnt change anything about the img
                     } else {
                         viewWriter.removeAttribute('asset-id', figure);
-                        //viewWriter.removeClass('image_copyright', figure);
+                        //viewWriter.removeClass('image_asset_id', figure);
                     }
                 }
             )

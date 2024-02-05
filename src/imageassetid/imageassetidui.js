@@ -22,13 +22,13 @@ export default class ImageAssetIdUi extends Plugin {
     }
 
     /**
-     * Creates an input for image-copyright and stores it in the editor
+     * Creates an input for image-asset-id and stores it in the editor
      * @private
      */
     _createInput() {
         const editor = this.editor;
-        x;
-        const componentName = `imageAssetId`; //TODO refactor this to imageCopyrightInput
+
+        const componentName = `imageAssetId`;
 
         editor.ui.componentFactory.add(componentName, (locale) => {
             const command = editor.commands.get('imageAssetId');
@@ -36,7 +36,7 @@ export default class ImageAssetIdUi extends Plugin {
             const t = locale.t;
 
             input.set({
-                placeholder: t('asset-id'),
+                placeholder: t('Asset-Id'),
             });
 
             input.extendTemplate({
