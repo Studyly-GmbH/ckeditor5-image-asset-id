@@ -24,13 +24,13 @@ export default class ImageAssetIdEditing extends Plugin {
         const schema = editor.model.schema;
 
         // Register imageSize command.
-        editor.commands.add('imageCopyright', new ImageAssetIdCommand(editor));
+        editor.commands.add('imageAssetId', new ImageAssetIdCommand(editor));
 
         schema.extend('imageInline', {
-            allowAttributes: ['copyright-notice'],
+            allowAttributes: ['asset-id'],
         });
         schema.extend('imageBlock', {
-            allowAttributes: ['copyright-notice'],
+            allowAttributes: ['asset-id'],
         });
         this._registerConverters(editor, 'imageBlock');
         this._registerConverters(editor, 'imageInline');
@@ -39,7 +39,7 @@ export default class ImageAssetIdEditing extends Plugin {
     _registerConverters(editor, imageType) {
         editor.conversion.for('downcast').add((dispatcher) =>
             dispatcher.on(
-                `attribute:copyright-notice:${imageType}`,
+                `attribute:asset-id:${imageType}`,
                 (evt, data, conversionApi) => {
                     if (
                         !conversionApi.consumable.consume(data.item, evt.name)
@@ -54,14 +54,14 @@ export default class ImageAssetIdEditing extends Plugin {
 
                     if (data.attributeNewValue !== null) {
                         viewWriter.setAttribute(
-                            'copyright-notice',
+                            'asset-id',
                             data.attributeNewValue,
                             figure
                         );
-                        viewWriter.addClass('image_copyright', figure);
+                        //viewWriter.addClass('image_copyright', figure);
                     } else {
-                        viewWriter.removeAttribute('copyright-notice', figure);
-                        viewWriter.removeClass('image_copyright', figure);
+                        viewWriter.removeAttribute('asset-id', figure);
+                        //viewWriter.removeClass('image_copyright', figure);
                     }
                 }
             )
@@ -73,12 +73,12 @@ export default class ImageAssetIdEditing extends Plugin {
         editor.conversion.for('upcast').attributeToAttribute({
             view: {
                 name: imageType === 'imageBlock' ? 'figure' : 'img',
-                key: 'copyright-notice',
+                key: 'asset-id',
             },
             model: {
-                key: 'copyright-notice',
+                key: 'asset-id',
                 value: (viewElement) => {
-                    return viewElement.getAttribute('copyright-notice');
+                    return viewElement.getAttribute('asset-id');
                 },
             },
             converterPriority: 'low',

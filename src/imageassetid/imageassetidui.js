@@ -27,36 +27,37 @@ export default class ImageAssetIdUi extends Plugin {
      */
     _createInput() {
         const editor = this.editor;
-        const componentName = `imageCopyright`; //TODO refactor this to imageCopyrightInput
+        x;
+        const componentName = `imageAssetId`; //TODO refactor this to imageCopyrightInput
 
         editor.ui.componentFactory.add(componentName, (locale) => {
-            const command = editor.commands.get('imageCopyright');
+            const command = editor.commands.get('imageAssetId');
             const input = new InputTextView(locale);
             const t = locale.t;
 
             input.set({
-                placeholder: t('copyright'),
+                placeholder: t('asset-id'),
             });
 
             input.extendTemplate({
                 attributes: {
-                    class: ['image-copyright-input'],
+                    class: ['image-asset-id'],
                 },
             });
 
             input.bind('value').to(command, (value) => {
-                return value ? value['copyright-notice'] : null;
+                return value ? value['asset-id'] : null;
             });
 
             input.on('input', () => {
                 // used instead of input.isEmpty because after typing one char into empty input, it doesn't register as not empty
                 if (input.element.value.length === 0) {
-                    editor.execute('imageCopyright', {
-                        'copyright-notice': null,
+                    editor.execute('imageAssetId', {
+                        'asset-id': null,
                     });
                 } else {
-                    editor.execute('imageCopyright', {
-                        'copyright-notice': input.element.value,
+                    editor.execute('imageAssetId', {
+                        'asset-id': input.element.value,
                     });
                 }
             });

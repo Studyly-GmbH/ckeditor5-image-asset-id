@@ -21,23 +21,23 @@ export default class ImageAssetIdCommand extends Command {
             this.editor.model.document.selection.getSelectedElement();
         this.isEnabled = imageUtils.isImage(element);
 
-        let copyrightNotice = this.getCopyrightNotice(element);
+        let assetId = this.getImageAssetId(element);
 
-        if (copyrightNotice) {
+        if (assetId) {
             this.value = {
-                'copyright-notice': copyrightNotice,
+                'asset-id': assetId,
             };
         } else {
             this.value = null;
         }
     }
 
-    getCopyrightNotice(element) {
-        let copyright = null;
-        if (element && element.hasAttribute('copyright-notice')) {
-            copyright = element.getAttribute('copyright-notice');
+    getImageAssetId(element) {
+        let assetId = null;
+        if (element && element.hasAttribute('asset-id')) {
+            assetId = element.getAttribute('asset-id');
         }
-        return copyright;
+        return assetId;
     }
 
     /**
@@ -50,14 +50,14 @@ export default class ImageAssetIdCommand extends Command {
         const imageElement = model.document.selection.getSelectedElement();
 
         model.change((writer) => {
-            if (options['copyright-notice']) {
+            if (options['asset-id']) {
                 writer.setAttribute(
-                    'copyright-notice',
-                    options['copyright-notice'],
+                    'asset-id',
+                    options['asset-id'],
                     imageElement
                 );
             } else {
-                writer.removeAttribute('copyright-notice', imageElement);
+                writer.removeAttribute('asset-id', imageElement);
             }
         });
 
