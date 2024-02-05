@@ -1,8 +1,8 @@
 {
-  "name": "image-copyright",
+  "name": "image-asset-id",
   "version": "1.0.6",
-  "description": "Image Copyright Setter for CKEditor5",
-  "main": "src/imagecopyright.js",
+  "description": "Image Asset Id setter for CKEditor5",
+  "main": "src/imageassetid.js",
   "keywords": [
     "ckeditor5",
     "image",
@@ -27,5 +27,5 @@
   },
   "author": "th3mast3rofshadows",
   "license": "GPL",
-  "types": "src/imagecopyright.d.ts"
+  "types": "src/imageassetid.d.ts"
 }
