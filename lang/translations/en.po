@@ -4,6 +4,5 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-msgctxt "Asset-Id"
 msgid "Asset-Id"
 msgstr "Asset-Id"

@@ -4,6 +4,5 @@ msgstr ""
 "Language-Team: German (Samhammer AG)\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgctxt "Asset-Id"
 msgid "Asset-Id"
 msgstr "Asset-Id"
